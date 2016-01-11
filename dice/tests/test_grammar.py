@@ -53,10 +53,17 @@ class TestOperators(object):
         value = roll('6d6 v 3')
         assert len(value) == 3
 
+    def test_drop_odd(self):
+        value = roll('7d6 v 3')
+        assert len(value) == 3
+
     def test_keep(self):
         value = roll('6d6 ^ 3')
         assert len(value) == 3
 
+    def test_keep_odd(self):
+        value = roll('7d6 ^ 3')
+        assert len(value) == 3
 
 class TestOperatorPrecedence(object):
     def test_operator_precedence_1(self):
