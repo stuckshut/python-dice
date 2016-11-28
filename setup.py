@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name             = 'dice',
-    version          = '1.0.2',
+    version          = '1.1.0',
 
     author           = "Sam Clements",
     author_email     = "sam@borntyping.co.uk",
@@ -39,6 +39,8 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Games/Entertainment',
         'Topic :: Games/Entertainment :: Multi-User Dungeons (MUD)',
         'Topic :: Utilities',

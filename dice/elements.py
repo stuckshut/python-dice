@@ -5,7 +5,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 import random
 import operator
 
-from dice.utilities import classname
+from dice.utilities import classname, addevensubodd
 
 
 class Element(object):
@@ -113,8 +113,14 @@ class Operator(Element):
             classname(self), ', '.join(map(str, self.orginal_operands)))
 
     def evaluate(self):
-        self.operands = map(self.evaluate_object, self.operands)
-        return self.function(*self.operands)
+        self.operands = list(map(self.evaluate_object, self.operands))
+        try:
+            return self.function(*self.operands)
+        except TypeError:
+            value = self.operands[0]
+            for o in self.operands[1:]:
+                value = self.function(value, o)
+            return value
 
     @property
     def function(self):
@@ -140,6 +146,10 @@ class Sub(IntegerOperator):
 
 class Add(IntegerOperator):
     function = operator.add
+
+
+class AddEvenSubOdd(IntegerOperator):
+    function = addevensubodd
 
 
 class Total(Operator):
